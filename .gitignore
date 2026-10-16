@@ -1,0 +1,17 @@
+# Local Wi-Fi credentials
+secrets.h
+wifi_config.h
+.env
+
+# Arduino / PlatformIO build files
+.pio/
+build/
+.vscode/
+*.elf
+*.bin
+*.hex
+*.uf2
+
+# Operating system files
+.DS_Store
+Thumbs.db
