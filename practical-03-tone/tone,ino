@@ -1,0 +1,53 @@
+
+/*
+   VERTEX IoT Workshop
+   Practical 03: Tone Generation
+   Sample: Twinkle, Twinkle, Little Star
+ 
+   Hardware:
+   - ESP32
+   - Passive piezo buzzer
+  
+   Connection:
+   Buzzer signal (+) -> GPIO 32
+   Buzzer GND (-)    -> GND
+ */
+
+const int BUZZER_PIN = 23;
+
+// Musical notes in Hertz
+const int C4 = 262;
+const int D4 = 294;
+const int E4 = 330;
+const int F4 = 349;
+const int G4 = 392;
+
+// Melody: Twinkle, Twinkle, Little Star
+const int melody[] = {
+  C4, C4, G4, G4, A4, A4, G4,
+  F4, F4, E4, E4, D4, D4, C4
+};
+
+// Duration of each note in milliseconds
+const int noteDurations[] = {
+  400, 400, 400, 400, 400, 400, 800,
+  400, 400, 400, 400, 400, 400, 800
+};
+
+void setup() {
+  pinMode(BUZZER_PIN, OUTPUT);
+}
+
+void loop() {
+  int numberOfNotes = sizeof(melody) / sizeof(melody[0]);
+
+  for (int i = 0; i < numberOfNotes; i++) {
+    // Play the musical note.
+    tone(BUZZER_PIN, melody[i]);
+    delay(noteDurations[i]);
+    noTone(BUZZER_PIN);
+    delay(100);
+  }
+  // Pause before playing the melody again.
+  delay(1500);
+}
